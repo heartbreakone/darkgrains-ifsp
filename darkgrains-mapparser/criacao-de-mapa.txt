@@ -1,0 +1,17 @@
+Usando o programa ILLUSTRATOR (Adobe)
+
+1. O desenho deve ter 1000px x 1000px
+2. Constitui-se as ruas: 
+	Uma layer com o nome dg-streets contendo pathes (ou caminhos) - Line Segment tool.
+	O caminho deve conter apenas /Stroke/ cor #000, com grossura de '1pt' e sem preenchimento.
+	Cada caminho deve ser terminado por dois nós (nodes)
+Uma sobreposição de caminhos não assegura que eles podem pertencer à mesma rota.
+(Sobreposição de caminho != Cruzamento. Se você colocar uma linha em cima da outra, você tem 2 caminhos, quando você deveria ter 4, pois cada caminho deve começar em sua extremidade e terminar no meio. O MEIO deve concentrar uma terminação de cada caminho para que, por exemplo, um carro possa virar à direita. Um exemplo de sobreposição é um viaduto em cima do outro e um exemplo de cruzamento é um cruzamento normal entre duas vias.)
+	Para que um nó seja criado no cruzamento entre dois caminhos deve-se usar a ferramenta /Outline/, no grupo /Pathfinder/.
+3. Constitui-se os prédios:
+	Uma layer com o nome dg-blocks contendo rectangles (ou quadrados) - Rectangle Tool.
+	Os blocos não podem conter nenhuma deformação. Apenas retângulos.
+	Cada bloco deve conter apenas /Fill/. Sem /Stroke/. Sua cor deve ir de #FFF (Zero-Metro) até #000 (Máximo de altura), representando a altura da construção. (Quanto mais escura a cor, mais alta ela é).
+4. O Arquivo deve ser exportado como 'SVG' (sob configurações padrão).
+	Qualquer elemento não previsto e não conflitante não deve causar problemas no processamento e deve ser ignorado.
+

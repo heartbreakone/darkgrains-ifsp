@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nifty xmlns="http://nifty-gui.sourceforge.net/nifty-1.3.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://nifty-gui.sourceforge.net/nifty-1.3.xsd http://nifty-gui.sourceforge.net/nifty-1.3.xsd">    
+    
+    <useControls filename="nifty-default-controls.xml"/>
+    <useStyles filename="nifty-default-styles.xml"/>
+    
+    <registerSound id="click" filename="Sounds/MúsicasConvertidasParaOgg/Botoes/onClick.ogg" />
+    <registerSound id="hover" filename="Sounds/MúsicasConvertidasParaOgg/Botoes/RollOver.ogg" />
+    
+        
+    <screen id="login" controller="com.dg.nifty.LoginScreenController">
+        
+        <layer id="background" childLayout="overlay">
+            <image filename="Interface/img/menu/background.png"/>
+        </layer>
+        
+        <layer id="back-buttons" childLayout="center">
+                
+            <panel childLayout="horizontal" align="right" valign="top" height="10%">
+                
+                <panel width="*"/>
+                                
+                <image filename="Interface/img/menu/login/botao-cadastro-1.png" style="image-button" width="50px" height="50px">
+                    <effect>
+                        <onHover name="changeImage"
+                                 active="Interface/img/menu/login/botao-cadastro-2.png"
+                                 inactive="Interface/img/menu/login/botao-cadastro-1.png"/>
+                        <onEndScreen name="move" mode="out" direction="top" lenght="250"/>
+                        <onHover name="playSound" sound="hover"/>
+                        <onClick name="playSound" sound="click"/>
+                    </effect>
+                    
+                    <interact onClick="popup(cadastro)"/>
+                </image>
+                    
+                <panel width="5px"/>
+                    
+                <image filename="Interface/img/menu/botao-configurargeral-1.png" style="image-button" width="50px" height="50px">
+                    <effect>
+                        <onHover name="changeImage"
+                                 active="Interface/img/menu/botao-configurargeral-2.png"
+                                 inactive="Interface/img/menu/botao-configurargeral-1.png"/>
+                        <onClick name="playSound" sound="click"/>
+                        <onHover name="playSound" sound="hover"/>
+                    </effect>
+                    <interact onClick="popup(settings)"/>
+                </image>
+                            
+                <panel width="5px"/>
+                            
+                <image filename="Interface/img/menu/login/botao-sair-3.png" style="image-button" width="50px" height="50px">
+                    <effect>
+                        <onHover name="changeImage"
+                                 active="Interface/img/menu/login/botao-sair-4.png"
+                                 inactive="Interface/img/menu/login/botao-sair-3.png"/>
+                        <onClick name="playSound" sound="click"/>
+                        <onHover name="playSound" sound="hover"/>
+                    </effect>
+                    <interact onClick="sair()"/>
+                </image>       
+                
+                <panel width="5px"/>
+                                                                
+            </panel>
+            
+        </layer>
+        
+        
+        <layer id="content" childLayout="center">
+            
+            <panel childLayout="center" align="left" width="50%">
+                
+                <image filename="Interface/img/menu/login/logo-aguia-1.png" style="image-button">
+                    <effect>
+                        <onHover name="changeImage"
+                                 active="Interface/img/menu/login/logo-aguia-2.png"
+                                 inactive="Interface/img/menu/login/logo-aguia-1.png"/>
+                        <onClick name="shake" distance="5.0" global="false"/>
+                        <onStartScreen name="move" mode="in" direction="left" lenght="250" inherit="true"/>
+                        <onEndScreen name="move" mode="out" direction="left" lenght="250" inherit="true"/>
+                        <onClick name="playSound" sound="click"/>
+                        <onHover name="playSound" sound="hover"/>
+                    </effect>
+                    <interact onClick="popup(credit)"/>
+                </image>                
+            </panel>
+            
+                    
+            <panel childLayout="center" align="right" width="50%">
+                        
+                <effect>
+                    <onStartScreen name="move" mode="in" direction="right" lenght="250" inherit="true"/>
+                    <onEndScreen name="move" mode="out" direction="right" lenght="250" inherit="true"/>
+                </effect>
+                
+                <panel childLayout="vertical" height="50%" width="50%">
+                    
+                    <panel height="*"/>
+                    
+                    <text text="username" style="default-text-white" align="left"/>
+                    <control id="username" name="textfield" maxLength="20"/>
+                    
+                    <panel height="5%"/>
+                                        
+                    <text text="password" style="default-text-white" align="left"/>
+                    <control id="password" name="textfield" maxLength="20" passwordChar="*"/>
+                    
+                    <panel height="5%"/>
+                    
+                    <panel childLayout="horizontal">
+                        
+                        <image filename="Interface/img/menu/login/botao-proximo-1.png" style="image-button" align="center">
+                            <effect>
+                                <onHover name="changeImage"
+                                         active="Interface/img/menu/login/botao-proximo-2.png"
+                                         inactive="Interface/img/menu/login/botao-proximo-1.png"/>
+                                <onClick name="playSound" sound="click"/>
+                                <onHover name="playSound" sound="hover"/>
+                            </effect>
+                            <interact onClick="login()"/>
+                        </image>
+                        
+                    </panel>
+                        
+                    <panel height="*"/>
+                    
+                </panel>
+                
+            </panel>          
+           
+        </layer>
+        
+    </screen>
+    
+    <!-- popup de cadastro -->
+    <popup id="cadastro" backgroundColor="#000a" childLayout="center" controller="com.dg.nifty.LoginScreenController">
+        
+        
+        <image filename="Interface/img/menu/popup-back.png"
+               imageMode="resize:96,1111,96,169 , 96,1111,96,399 , 96,1111,96,178"
+               width="80%" height="80%"/>
+        
+        <panel childLayout="vertical" width="50%" height="50%">
+            
+            <panel height="10%"/>
+            
+            <text text="CADASTRO" style="default-text-red"/>
+            
+            <panel height="10%"/>
+            
+            <text text="username" style="default-text-red" />
+            <control id="usernameCadastro" name="textfield" maxLength="20" width="200" align="center"/>
+                    
+            <panel height="5%"/>
+                                        
+            <text text="password" style="default-text-red"/>
+            <control id="passwordCadastro" name="textfield" maxLength="20" passwordChar="*" width="200" align="center"/>
+            
+            <panel height="5%"/>
+            
+            <text text="email" style="default-text-red"/>
+            <control id="emailCadastro" name="textfield" maxLength="20" width="200" align="center"/>
+            
+            <panel height="5%"/>
+            
+            <panel childLayout="horizontal">
+                
+                <panel width="*"/>
+                
+                <image filename="Interface/img/menu/login/botao-confirmar-1.png" width="50" height="50" style="image-button">
+                    <effect>
+                        <onHover name="changeImage"
+                                 active="Interface/img/menu/login/botao-confirmar-2.png"
+                                 inactive="Interface/img/menu/login/botao-confirmar-1.png"/>
+                        <onClick name="playSound" sound="click"/>
+                        <onHover name="playSound" sound="hover"/>
+                    </effect>
+                    <interact onClick="cadastra()"/>
+                </image>
+                
+                <panel width="5%"/>
+                
+                <image filename="Interface/img/menu/botao-voltargeral-1.png" width="50" height="50" style="image-button">
+                    <effect>
+                        <onHover name="changeImage"
+                                 active="Interface/img/menu/botao-voltargeral-2.png"
+                                 inactive="Interface/img/menu/botao-voltargeral-1.png"/>
+                        <onClick name="playSound" sound="click"/>
+                        <onHover name="playSound" sound="hover"/>
+                    </effect>
+                    <interact onClick="popdown()"/>
+                </image>
+                
+                <panel width="*"/>
+                
+            </panel>
+            
+        </panel>
+        
+        <effect>
+            <onStartScreen name="fade"/>
+            <onEndScreen name="fade" start="#f" end="#0" length="500"
+                         neverStopRendering="true"/>
+        </effect>
+        
+    </popup>
+    
+    
+</nifty>

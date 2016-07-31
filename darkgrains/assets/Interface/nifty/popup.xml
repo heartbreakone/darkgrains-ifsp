@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nifty xmlns="http://nifty-gui.sourceforge.net/nifty-1.3.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://nifty-gui.sourceforge.net/nifty-1.3.xsd http://nifty-gui.sourceforge.net/nifty-1.3.xsd">
+    
+    
+    <useControls filename="nifty-default-controls.xml"/>
+    <useStyles filename="nifty-default-styles.xml"/>
+    
+    <registerSound id="click" filename="Sounds/MúsicasConvertidasParaOgg/Botoes/onClick.ogg" />
+    <registerSound id="hover" filename="Sounds/MúsicasConvertidasParaOgg/Botoes/RollOver.ogg" />
+    
+    <!-- Popup de créditos -->
+    <popup id="credit" backgroundColor="#000a" childLayout="center">
+        
+        <effect>
+            <onStartScreen name="fade"/>
+            <onEndScreen name="fade" start="#f" end="#0" length="1000"
+                         neverStopRendering="true"/>
+        </effect>
+        
+        <panel childLayout="vertical" backgroundColor="#000f">
+            
+            <effect>
+                <onStartScreen name="fade" startDelay="500"/>
+            </effect>
+            
+            <text text="darkgrains" style="default-text-red"/>
+            
+            <panel height="10px"/>
+            
+            <text text="Realizado pelos alunos:" style="default-text-white"/>
+            
+            <panel height="5px"/>
+            
+            <text text="Luis Gustavo Miki" style="default-text-white"/>
+            <text text="Pedro Gabriel B. Oliveira" style="default-text-white"/>
+            <text text="Raphael de Oliveira Rodrigues" style="default-text-white"/>
+            <text text="Victor Cavalcanti Souto" style="default-text-white"/>
+            <text text="Victor Silva dos Santos" style="default-text-white"/>
+            
+            <image filename="Interface/img/menu/botao-voltargeral-1.png" width="50px" height="50px" style="image-button" align="center">
+                <interact onClick="popdown()"/>
+                <effect>
+                    <onHover name="changeImage" 
+                             active="Interface/img/menu/botao-voltargeral-2.png"
+                             inactive="Interface/img/menu/botao-voltargeral-1.png"/>
+                    <onClick name="playSound" sound="click"/>
+                    <onHover name="playSound" sound="hover"/>
+                </effect>
+            </image>
+            
+        </panel>
+        
+    </popup>
+    
+    <!-- Popup de erro -->
+    <popup id="erro" backgroundColor="#000a" childLayout="center" controller="com.dg.nifty.AbstractScreenController">
+        
+        <panel childLayout="vertical" height="50%" backgroundColor="#000f">
+            
+            <panel height="*"/>
+            
+            <text text="erro" style="default-text-red"/>
+            
+            <panel height="5px"/>
+            
+            <text text="${CALL.getErroMessage()}" style="default-text-white"/>
+            
+            <panel height="10px"/>
+            
+            <image filename="Interface/img/menu/botao-voltargeral-1.png" width="50px" height="50px" style="image-button" align="center">
+                <interact onClick="popdown(erro)"/>
+                <effect>
+                    <onHover name="changeImage" 
+                             active="Interface/img/menu/botao-voltargeral-2.png"
+                             inactive="Interface/img/menu/botao-voltargeral-1.png"/>
+                    <onClick name="playSound" sound="click"/>
+                    <onHover name="playSound" sound="hover"/>
+                </effect>
+            </image>
+            
+            <panel height="*"/>
+            
+        </panel>
+        
+        <effect>
+            <onStartScreen name="fade" length="100"/>
+            <onEndScreen name="fade" start="#f" end="#0" length="100"/>
+        </effect>
+        
+    </popup>
+    
+    <!-- Popup de alerta -->
+    <popup id="alert" backgroundColor="#000a" childLayout="center" controller="com.dg.nifty.AbstractScreenController">
+        
+        <panel childLayout="vertical" height="50%" backgroundColor="#000f">
+            
+            <panel height="*"/>
+            
+            <text text="Alerta" style="default-text-red"/>
+            
+            <panel height="5px"/>
+            
+            <text text="${CALL.getAlertMessage()}" style="default-text-white"/>
+            
+            <panel height="10px"/>
+            
+            <image filename="Interface/img/menu/botao-voltargeral-1.png" width="50px" height="50px" style="image-button" align="center">
+                <interact onClick="popdown()"/>
+                <effect>
+                    <onHover name="changeImage" 
+                             active="Interface/img/menu/botao-voltargeral-2.png"
+                             inactive="Interface/img/menu/botao-voltargeral-1.png"/>
+                    <onClick name="playSound" sound="click"/>
+                    <onHover name="playSound" sound="hover"/>
+                </effect>
+            </image>
+            
+            <panel height="*"/>
+            
+        </panel>
+        
+        <effect>
+            <onStartScreen name="fade" length="100"/>
+            <onEndScreen name="fade" start="#f" end="#0" length="100"/>
+        </effect>
+        
+    </popup>
+    
+    
+    <!-- popup de configurações -->
+    <popup id="settings" backgroundColor="#000a" childLayout="center">
+                                              
+        <panel childLayout="vertical" width="50%" align="left">
+                
+            <panel height="*"/>
+                
+            <panel backgroundImage="Interface/img/menu/settings-video/background-interface-1.png"
+                   childLayout="center" childClip="true" width="48%" height="75%" align="center">
+                                        
+                <panel childLayout="vertical" height="60%" valign="bottom">
+                        
+                    <panel height="*"/>
+                        
+                    <image filename="Interface/img/menu/settings-video/botao-brilhoecontraste-1.png"
+                           width="50%" height="20%" align="center"/>
+                    <control id="brilho" name="horizontalSlider" width="50%" align="center"/>
+                        
+                    <panel height="1%"/>
+                        
+                    <image filename="Interface/img/menu/settings-video/botao-resolucao-1.png"
+                           width="50%" height="20%" align="center"/>
+                    <control id="resolucao" name="dropDown" align="center" width="50%"/>
+                        
+                    <panel height="1%"/>
+                        
+                    <panel childLayout="horizontal" align="center">
+                            
+                        <text text="fullscreen " style="default-text-white"/>
+                        <control id="fullscreen" name="checkbox"/>
+                            
+                    </panel>
+                        
+                    <panel height="*"/>
+                        
+                </panel>
+                    
+            </panel>
+            
+            <panel height="*"/>
+            
+        </panel>
+            
+        <panel width="5px"/>
+            
+        <panel childLayout="vertical" width="50%" align="right">
+                
+            <panel height="*"/>
+                
+            <panel backgroundImage="Interface/img/menu/settings-audio/background-volume-1.png"
+                   childLayout="center" childClip="true" width="48%" height="75%" align="center">
+                    
+                <panel childLayout="vertical" height="60%" valign="bottom">
+                        
+                    <panel height="*"/>
+                        
+                    <image filename="Interface/img/menu/settings-audio/botao-efeitosdesom-1.png"
+                           width="50%" height="20%" align="center"/>
+                    <control id="effects" name="horizontalSlider" width="50%" align="center"/>
+                        
+                    <panel height="1%"/>
+                        
+                    <image filename="Interface/img/menu/settings-audio/botao-musica-1.png"
+                           width="50%" height="20%" align="center"/>
+                    <control id="effects" name="horizontalSlider" width="50%" align="center"/>
+                        
+                    <panel height="1%"/>
+                        
+                    <image filename="Interface/img/menu/settings-audio/botao-somgeral-1.png"
+                           width="50%" height="20%" align="center"/>
+                    <control id="effects" name="horizontalSlider" width="50%" align="center"/>
+                        
+                    <panel height="1%"/>
+                        
+                    <panel childLayout="horizontal" align="center">
+                            
+                        <text text="Mute" style="default-text-white"/>
+                        <control id="mute" name="checkbox"/>
+                            
+                    </panel>
+                        
+                    <panel height="*"/>
+                            
+                </panel>
+                    
+            </panel>
+                
+            <panel height="*"/>
+            
+        </panel>
+           
+        <panel childLayout="center" valign="bottom" height="40%">
+            <image filename="Interface/img/menu/botao-voltargeral-1.png" width="50" height="50" style="image-button">
+                <effect>
+                    <onHover name="changeImage"
+                             active="Interface/img/menu/botao-voltargeral-2.png"
+                             inactive="Interface/img/menu/botao-voltargeral-1.png"/>
+                    <onClick name="playSound" sound="click"/>
+                    <onHover name="playSound" sound="hover"/>
+                </effect>
+                <interact onClick="setConfigs()"/>
+            </image>
+        </panel>
+        
+        <panel childLayout="center" valign="top" height="40%">
+            <text text="settings" style="default-text-red" />
+        </panel>
+            
+        <effect>
+            <onStartScreen name="fade"/>
+            <onEndScreen name="fade" start="#f" end="#0" length="500"/>
+        </effect>
+        
+    </popup>
+    
+    <popup id="load" childLayout="center" backgroundColor="#000a">
+        <text text="Wait..." style="text-big"/>
+    </popup>
+    
+    
+</nifty>

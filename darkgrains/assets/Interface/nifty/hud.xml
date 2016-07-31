@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nifty xmlns="http://nifty-gui.sourceforge.net/nifty-1.3.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://nifty-gui.sourceforge.net/nifty-1.3.xsd http://nifty-gui.sourceforge.net/nifty-1.3.xsd">
+    
+    <useControls filename="nifty-default-controls.xml"/>
+    <useStyles filename="nifty-default-styles.xml"/> 
+    
+    <screen id="hud" controller="com.dg.nifty.HUDScreenController">
+    
+        <layer id="content" childLayout="vertical">
+            
+            <panel id="top" height="15%" valign="top" childLayout="center">
+                
+                <panel width="20%" align="left" valign="top" childLayout="horizontal">
+                    
+                    <panel width="5px"/>
+                    
+                    <image filename="Interface/img/hud/conjunto3/botao-lista-1.png"
+                           width="50px" height="50px" style="image-button">
+                        <interact onClick="listButton()"/>
+                        <effect>
+                            <onHover name="changeImage" active="Interface/img/hud/conjunto3/botao-lista-2.png"
+                                     inactive="Interface/img/hud/conjunto3/botao-lista-1.png"/>
+                        </effect>
+                    </image>
+                    
+                    <panel width="5px"/>
+                    
+                    <image filename="Interface/img/hud/conjunto3/botao-tutorial-1.png"
+                           width="50px" height="50px" style="image-button">
+                        <interact onClick="tutorialButton()"/>
+                        <effect>
+                            <onHover name="changeImage" active="Interface/img/hud/conjunto3/botao-tutorial-2.png"
+                                     inactive="Interface/img/hud/conjunto3/botao-tutorial-1.png"/>
+                        </effect>
+                    </image>
+                    
+                    <panel width="5px"/>
+                    
+                </panel>
+                
+                <panel width="30%" height="50px" align="right" valign="top" childLayout="horizontal">
+                                        
+                    <panel width="40%"/>
+                    
+                    <text id="grains" text="\#C1272D#Grains 0" style="text-big"/>
+                    
+                </panel>
+                
+            </panel>
+            
+            <panel id="mid" height="*" childLayout="horizontal">
+                
+                               
+            </panel>
+            
+            <panel id="bottom" backgroundColor="#C1272D" height="25%" childLayout="horizontal">
+                <effect>
+                    <onStartScreen name="border" color="#ffff" border="3px" neverStopRendering="true"/>
+                </effect>
+                
+                <panel childLayout="horizontal">
+                    <effect>
+                        <onStartScreen name="border" color="#ffff" border="3px" neverStopRendering="true"/>
+                    </effect>
+                    
+                    <panel width="*"/>
+                    
+                    <panel childLayout="center" height="*">
+                        <control name="button" style="square-button" width="125px" height="125px"
+                                 icon="Interface/img/hud/conjunto2/btn-rank-1.png"
+                                 icon-alt="Interface/img/hud/conjunto2/btn-rank-1.png">
+                            <interact onClick="sendBat(cab)"/>
+                            <effect>
+                                <onStartScreen name="border" color="#ffff" border="3px" neverStopRendering="true"/>
+                            </effect>
+                        </control>
+                        <text text="Cabo" id="cabCount" style="default-text-white" valign="bottom"/>
+                    </panel>
+                    <panel width="2%"/>
+                    
+                    <panel childLayout="center" height="*">
+                        <control name="button" style="square-button" width="125px" height="125px"
+                                 icon="Interface/img/hud/conjunto2/btn-rank-2.png"
+                                 icon-alt="Interface/img/hud/conjunto2/btn-rank-2.png">
+                            <interact onClick="sendBat(ten)"/>
+                            <effect>
+                                <onStartScreen name="border" color="#ffff" border="3px" neverStopRendering="true"/>
+                            </effect>
+                        </control>
+                        <text text="Tenente" id="tenCount" style="default-text-white" valign="bottom"/>
+                    </panel>
+                    
+                    <panel width="2%"/>
+                    
+                    <panel childLayout="center" height="*">
+                        <control name="button" style="square-button" width="125px" height="125px"
+                                 icon="Interface/img/hud/conjunto2/btn-rank-3.png"
+                                 icon-alt="Interface/img/hud/conjunto2/btn-rank-3.png">
+                            <interact onClick="sendBat(cor)"/>
+                            <effect>
+                                <onStartScreen name="border" color="#ffff" border="3px" neverStopRendering="true"/>
+                            </effect>
+                        </control>
+                        <text text="Coronel" id="corCount" style="default-text-white" valign="bottom"/>
+                    </panel>
+                    
+                    <panel width="*"/>
+                </panel>
+                
+                
+                <panel childLayout="center" width="50%">
+                    <panel width="99%" childLayout="horizontal">
+                    
+                        <panel childLayout="center"
+                               backgroundImage="Interface/img/hud/newhud/botao-cabo-1.png">
+                                                        
+                            <panel childLayout="vertical">
+                                <panel height="*"/>
+                                <panel childLayout="horizontal">
+                                    <panel width="*"/>
+                                    <control align="right" name="button" style="square-button"
+                                             icon="Interface/img/hud/newhud/botao-mais-1.png"
+                                             icon-alt="Interface/img/hud/newhud/botao-mais-2.png">
+                                        <interact onClick="buy(cab)"/>
+                                    </control>
+                                    <panel width="10%"/>
+                                </panel>
+                                <panel height="20%"/>
+                                <panel childLayout="horizontal">
+                                    <panel width="*"/>
+                                    <control  align="right" name="button" style="square-button"
+                                              icon="Interface/img/hud/newhud/botao-menos-1.png"
+                                              icon-alt="Interface/img/hud/newhud/botao-menos-2.png">
+                                        <interact onClick="sell(cab)"/>
+                                    </control>
+                                    <panel width="10%"/>
+                                </panel>
+                                <panel height="*"/>
+                            </panel>
+                        </panel>
+                    
+                        <panel childLayout="vertical"
+                               backgroundImage="Interface/img/hud/newhud/botao-tenente-1.png">
+                            
+                            
+                            <panel childLayout="vertical">
+                                <panel height="*"/>
+                                <panel childLayout="horizontal">
+                                    <panel width="10%"/>
+                                    <control  align="left" name="button" style="square-button"
+                                              icon="Interface/img/hud/newhud/botao-mais-1.png"
+                                              icon-alt="Interface/img/hud/newhud/botao-mais-2.png">
+                                        <interact onClick="buy(ten)"/>
+                                    </control>
+                                    <panel width="*"/>
+                                </panel>
+                                <panel height="20%"/>
+                                <panel childLayout="horizontal">
+                                    <panel width="10%"/>
+                                    <control align="left" name="button" style="square-button"
+                                             icon="Interface/img/hud/newhud/botao-menos-1.png"
+                                             icon-alt="Interface/img/hud/newhud/botao-menos-2.png">
+                                        <interact onClick="sell(ten)"/>
+                                    </control>
+                                    <panel width="*"/>
+                                </panel>
+                                <panel height="*"/>
+                            </panel>
+                        </panel>
+                    
+                        <panel childLayout="vertical"
+                               backgroundImage="Interface/img/hud/newhud/botao-coronel-1.png">
+                                                        
+                            <panel childLayout="vertical">
+                                <panel height="*"/>
+                                <panel childLayout="horizontal">
+                                    <panel width="10%"/>
+                                    <control align="left" name="button" style="square-button"
+                                             icon="Interface/img/hud/newhud/botao-mais-1.png"
+                                             icon-alt="Interface/img/hud/newhud/botao-mais-2.png">
+                                        <interact onClick="buy(cor)"/>
+                                    </control>
+                                    <panel width="*"/>
+                                </panel>
+                                <panel height="20%"/>
+                                <panel childLayout="horizontal">
+                                    <panel width="10%"/>
+                                    <control align="left" name="button" style="square-button"
+                                             icon="Interface/img/hud/newhud/botao-menos-1.png"
+                                             icon-alt="Interface/img/hud/newhud/botao-menos-2.png">
+                                        <interact onClick="sell(cor)"/>
+                                    </control>
+                                    <panel width="*"/>
+                                </panel>
+                                <panel height="*"/>
+                            </panel>
+                        </panel> 
+                    
+                    </panel>
+                </panel>
+            </panel>
+            
+        </layer>
+        
+        <layer childLayout="center">
+            
+            <panel id="occEvent" childLayout="vertical" backgroundColor="#C1272D" height="40%" width="30%" align="right">
+                <effect>
+                    <onActive name="border" color="#ffff" border="4px" neverStopRendering="true"/>
+                    <onShow name="move" mode="in" direction="right" inherit="true"/>
+                    <onHide name="move" mode="out" direction="right" inherit="true"/>
+                </effect>
+                <text text="ocorrencia" style="default-text-white" valign="top"/>
+                <panel height="10%"/>
+                <text  id="info" style="default-text-white" />
+                <panel height="10%"/>
+                <text  id="bandidos" style="default-text-white" />
+                <panel height="10%"/>
+                <text  id="pericles" style="default-text-white"/>
+                <panel height="10%"/>
+                <image id="bandit"/>
+            </panel>            
+            
+        </layer>
+        
+        <layer childLayout="center">
+            
+            <image filename="Interface/img/menu/btnLoading.png">
+                <effect>
+                    <onStartScreen name="move" mode="out" direction="right" lenght="1000" startDelay="1000" inherit="true" neverStopRendering="true"/>
+                </effect>
+            </image>
+            
+        </layer>
+        
+    </screen>
+    
+    <popup id="pause-menu" childLayout="center" backgroundColor="#000a">
+        <panel backgroundColor="#000a" width="50%" height="50%" childLayout="vertical">
+            <panel childLayout="vertical">
+                <panel height="*"/>
+                <image filename="Interface/img/menu/pause-popup/botao-jogar-1.png" align="center" style="image-button" width="250px" height="100px" >
+                    <effect>
+                        <onHover name="changeImage"
+                                 active="Interface/img/menu/pause-popup/botao-jogar-2.png"
+                                 inactive="Interface/img/menu/pause-popup/botao-jogar-1.png"/>
+                        <onClick name="playSound" sound="click"/>
+                        <onHover name="playSound" sound="hover"/>
+                    </effect>
+                    <interact onClick="jogar()"/>
+                </image>
+                <panel height="2%"/>
+                <image filename="Interface/img/menu/pause-popup/botao-sair-1.png" align="center" style="image-button" width="250px" height="100px" > >
+                    <effect>
+                        <onHover name="changeImage"
+                                 active="Interface/img/menu/pause-popup/botao-sair-2.png"
+                                 inactive="Interface/img/menu/pause-popup/botao-sair-1.png"/>
+                        <onClick name="playSound" sound="click"/>
+                        <onHover name="playSound" sound="hover"/>
+                    </effect>
+                    <interact onClick="sair()"/>
+                </image>
+                <panel height="*"/>
+            </panel>
+        </panel>
+    </popup>
+    
+    
+</nifty>

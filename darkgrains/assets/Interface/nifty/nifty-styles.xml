@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<nifty-styles>
+    <!-- define a style with the name „myStyle“ -->
+    <style id="default-text-white">
+        <attributes font="Interface/Fonts/manteka-16.fnt"
+                    color="#FFFF"
+                    align="center"
+                    valign="center"/>
+    </style>
+    <style id="default-text-red">
+        <attributes font="Interface/Fonts/manteka-16.fnt"
+                    color="#C1272D"
+                    align="center"
+                    valign="center"/>
+    </style>
+    <style id="text-big">
+        <attributes font="Interface/Fonts/manteka-24.fnt"
+                    color="#ffff"
+                    align="center"
+                    valign="center"/>
+    </style>
+    <style id="image-button">
+        <attributes visibleToMouse="true"
+                    focusable="true"
+                    filter="true"/>
+    </style>
+    <style id="nifty-label">
+        <attributes font="Interface/Fonts/manteka-16.fnt"
+                    color="#FFFF"/>
+    </style>    
+    
+    <style id="square-button#panel">
+        <attributes backgroundImage="$icon" width="50px" height="50px" childLayout="center" visibleToMouse="true" />
+        <effect>
+            <onHover name="changeImage" active="$icon-alt" inactive="$icon" />
+            <onHover name="playSound" sound="hover"/>
+            <onClick name="changeImage" active="$icon" inactive="$icon-alt" />
+            <onClick name="playSound" sound="click"/>
+        </effect>
+    </style>
+    
+    <style id="buyDrag">
+        <attributes revert="true" drop="true" childLayout="overlay" width="110px" height="110px" />
+        <effect>
+            <onStartScreen name="border" color="#ffff" border="1px" neverStopRendering="true"/>
+        </effect>
+    </style>
+
+    <!-- +++++++++++++++++++++++++++++++++++++ -->
+    <!-- style for the button text -->
+    <!-- +++++++++++++++++++++++++++++++++++++ -->
+    <!--  Option Button  -->
+    <!-- END Option Button  -->
+    
+    
+    <!-- you can have more <style> definitions here -->
+</nifty-styles>

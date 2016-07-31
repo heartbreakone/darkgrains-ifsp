@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nifty xmlns="http://nifty-gui.sourceforge.net/nifty-1.3.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://nifty-gui.sourceforge.net/nifty-1.3.xsd http://nifty-gui.sourceforge.net/nifty-1.3.xsd">
+        
+    <useControls filename="nifty-default-controls.xml"/>
+    <useStyles filename="nifty-default-styles.xml"/>
+    
+    <registerSound id="click" filename="Sounds/MúsicasConvertidasParaOgg/Botoes/onClick.ogg" />
+    
+    <screen id="world-selection" controller="com.dg.nifty.WorldSelectionScreenController">
+    
+        <layer id="background" childLayout="overlay">
+            <image filename="Interface/img/menu/background.png"/>
+        </layer>
+        
+        <layer id="back-buttons" childLayout="center">
+                
+            <panel childLayout="horizontal" align="right" valign="top" height="10%">
+                
+                <panel width="*"/>
+                    
+                <image filename="Interface/img/menu/botao-configurargeral-1.png" style="image-button" width="50px" height="50px">
+                    <effect>
+                        <onHover name="changeImage"
+                                 active="Interface/img/menu/botao-configurargeral-2.png"
+                                 inactive="Interface/img/menu/botao-configurargeral-1.png"/>
+                        <onClick name="playSound" sound="click"/>
+                        <onHover name="playSound" sound="hover"/>
+                    </effect>
+                    <interact onClick="popup(settings)"/>
+                </image>
+                            
+                <panel width="5px"/>
+                            
+                <image filename="Interface/img/menu/login/botao-sair-3.png" style="image-button" width="50px" height="50px">
+                    <effect>
+                        <onHover name="changeImage"
+                                 active="Interface/img/menu/login/botao-sair-4.png"
+                                 inactive="Interface/img/menu/login/botao-sair-3.png"/>
+                        <onClick name="playSound" sound="click"/>
+                        <onHover name="playSound" sound="hover"/>
+                    </effect>
+                    <interact onClick="sair()"/>
+                </image>       
+                
+                <panel width="5px"/>
+                                                                
+            </panel>
+            
+        </layer>
+        
+        <layer id="content" childLayout="center">
+            
+            <effect>
+                <onStartScreen name="fade"/>
+                <onEndScreen name="fade" start="#f" end="#0" length="1000"/>
+            </effect>
+            
+            <panel childLayout="center" align="left" width="33%">
+                
+                <panel childLayout="vertical">
+                    
+                    <panel height="*"/>
+                                        
+                    <panel backgroundImage="Interface/img/menu/world-select/background-listademundos-1.png"
+                           height="65%" width="90%" childLayout="horizontal" align="center">
+                        
+                        <panel width="30%"/>
+                        
+                        <panel childLayout="vertical" valign="center">
+                            
+                            <panel height="*"/>
+                            
+                            <panel childLayout="horizontal">
+                                <panel childLayout="vertical" align="left">
+                                    <text  text="name: " style="default-text-white" align="left" HAlign="left"/>
+                                    <text id="name" text="" style="default-text-white" align="left"/>
+                                </panel>
+                            </panel>
+                            <panel height="5%"/>
+                            
+                            <panel childLayout="horizontal">
+                                <panel childLayout="vertical" align="left">
+                                    <text  text="id: " style="default-text-white" align="left" HAlign="left"/>
+                                    <text id="id" style="default-text-white" text="" align="left"/>
+                                </panel>
+                            </panel>
+                            <panel height="5%"/>
+                            
+                            <panel childLayout="horizontal">
+                                <panel childLayout="vertical" align="left">
+                                    <text  text="dificuldade: " style="default-text-white" align="left" HAlign="left"/>
+                                    <text id="dif" style="default-text-white" text="" align="left"/>
+                                </panel>
+                            </panel>
+                            <panel height="5%"/>
+                            
+                            <panel childLayout="horizontal">
+                                <panel childLayout="vertical" align="left">
+                                    <text  text="crime rate: " style="default-text-white" align="left" HAlign="left"/>
+                                    <text id="cr" style="default-text-white" text="" align="left"/>
+                                </panel>
+                                
+                            </panel>
+                            
+                            <panel height="5%"/>
+                            
+                            <panel childLayout="horizontal">
+                                <panel childLayout="vertical" align="left">
+                                    <text  text="criado em: " style="default-text-white" align="left" HAlign="left"/>
+                                    <text id="date" style="default-text-white" text="" align="left" wrap="true"/>
+                                
+                                </panel>
+                            </panel>
+                            <panel height="*"/>
+                            
+                        </panel>
+                        
+                        <panel width="*"/>
+                        
+                    </panel>
+                    
+                    <panel height="*"/>
+                    
+                </panel>
+                
+            </panel>
+            
+            <panel childLayout="vertical" align="center" width="33%">
+                
+                <panel height="*"/>
+                
+                <text text="Mundos" style="default-text-red" align="center"/>
+                <control id="worldList" name="listBox" selectionMode="Single" vertical="optional" horizontal="off" displayItems="5" align="center" width="50%"/>
+                    
+                <panel height="*"/>
+                
+            </panel>
+            
+            
+            <panel childLayout="center" align="right" width="33%">
+                
+                <panel backgroundImage="Interface/img/menu/world-select/background-listademundos-1.png"
+                       childLayout="vertical" height="65%" width="90%">
+                    
+                    <panel height="*"/>
+                    
+                    <image filename="Interface/img/menu/world-select/botao-jogar-5.png"
+                           width="40%" height="18%" style="image-button" align="center">
+                        <effect>
+                            <onHover name="changeImage"
+                                     active="Interface/img/menu/world-select/botao-jogar-6.png"
+                                     inactive="Interface/img/menu/world-select/botao-jogar-5.png"/>
+                            <onClick name="playSound" sound="click"/>
+                            <onHover name="playSound" sound="hover"/>
+                        </effect>
+                        <interact onClick="jogarWorld()"/>
+                    </image>
+                    
+                    <image filename="Interface/img/menu/world-select/botao-criar-3.png"
+                           width="40%" height="18%" style="image-button" align="center">
+                        <effect>
+                            <onHover name="changeImage"
+                                     active="Interface/img/menu/world-select/botao-criar-4.png"
+                                     inactive="Interface/img/menu/world-select/botao-criar-3.png"/>
+                            <onClick name="playSound" sound="click"/>
+                            <onHover name="playSound" sound="hover"/>
+                        </effect>
+                        <interact onClick="popup(world-creation)"/>
+                    </image>
+                
+                    <image filename="Interface/img/menu/world-select/botao-deletar-1.png"
+                           width="40%" height="18%" style="image-button" align="center">
+                        <effect>
+                            <onHover name="changeImage"
+                                     active="Interface/img/menu/world-select/botao-deletar-2.png"
+                                     inactive="Interface/img/menu/world-select/botao-deletar-1.png"/>
+                            <onClick name="playSound" sound="click"/>
+                            <onHover name="playSound" sound="hover"/>
+                        </effect>
+                        <interact onClick="deletarWorld()"/>
+                    </image>
+                
+                    <image filename="Interface/img/menu/world-select/botao-voltar-3.png"
+                           width="40%" height="18%" style="image-button" align="center">
+                        <effect>
+                            <onHover name="changeImage"
+                                     active="Interface/img/menu/world-select/botao-voltar-4.png"
+                                     inactive="Interface/img/menu/world-select/botao-voltar-3.png"/>
+                            <onClick name="playSound" sound="click"/>
+                            <onHover name="playSound" sound="hover"/>
+                        </effect>
+                        <interact onClick="voltar()"/>
+                    </image>
+                
+                    <panel height="*"/>
+                    
+                </panel>
+                
+            </panel>
+            
+        </layer>
+                
+    </screen>
+    
+    <popup id="world-creation" backgroundColor="#000a" childLayout="center">
+        
+        <effect>
+            <onStartScreen name="fade" length="500"/>
+            <onEndScreen name="fade" start="#f" end="#0" length="500"/>
+        </effect>
+        
+        <panel width="50%" align="left" childLayout="center">
+            
+            <panel backgroundImage="Interface/img/menu/world-creation/background-dificuldade-1.png"
+                   width="56%" height="66%" childLayout="center">
+               
+                <panel childLayout="vertical" valign="bottom">
+                        
+                    <panel height="*"/>
+                        
+                    <image id="facil" filename="Interface/img/menu/world-creation/botao-facil-1.png"
+                           style="image-button" width="50%" height="16%" align="center">
+                        <interact onClick="selectDificult(1)"/>
+                        <effect>
+                            <onCustom customKey="select" name="border" color="#ffff" border="1px" neverStopRendering="true"/>
+                            <onCustom customKey="deselect" name="border" color="#fff0" border="1px" neverStopRendering="false"/>
+                            <onClick name="playSound" sound="click"/>
+                        </effect>
+                    </image>
+                        
+                    <panel height="1%"/>
+                        
+                    <image id="medio" filename="Interface/img/menu/world-creation/botao-medio-1.png"
+                           style="image-button" width="50%" height="16%" align="center">
+                        <interact onClick="selectDificult(2)"/>
+                        <effect>
+                            <onCustom customKey="select" name="border" color="#ffff" border="1px" neverStopRendering="true"/>
+                            <onCustom customKey="deselect" name="border" color="#fff0" border="1px" neverStopRendering="false"/>
+                            <onClick name="playSound" sound="click"/>
+                        </effect>
+                    </image>
+                        
+                    <panel height="1%"/>
+                        
+                    <image id="dificil" filename="Interface/img/menu/world-creation/botao-dificil-1.png"
+                           style="image-button" width="50%" height="16%" align="center">
+                        <interact onClick="selectDificult(3)"/>
+                        <effect>
+                            <onCustom customKey="select" name="border" color="#ffff" border="1px" neverStopRendering="true"/>
+                            <onClick name="playSound" sound="click"/>
+                            <onCustom customKey="deselect" name="border" color="#fff0" border="1px" neverStopRendering="false"/>
+                        </effect>
+                    </image>
+                    
+                    <panel height="*"/>
+                    
+                </panel>
+                
+            </panel>
+            
+        </panel>
+        
+        <panel width="50%" align="right" childLayout="center">
+                    
+            <panel childLayout="vertical">
+                
+                <panel height="*"/>
+                
+                <text text="nome" style="default-text-white"/>
+                <control id="name-create" name="textfield" maxLength="20" width="50%" align="center" />
+                        
+                <panel height="5%"/>
+                        
+                <image filename="Interface/img/menu/world-creation/botao-criarejogar-1.png"
+                       style="image-button" width="50%" height="10%" align="center">
+                    <interact onClick="createAndPlay()"/>
+                    <effect>
+                        <onHover name="changeImage"
+                                 active="Interface/img/menu/world-creation/botao-criarejogar-2.png"
+                                 inactive="Interface/img/menu/world-creation/botao-criarejogar-1.png"/>
+                        <onClick name="playSound" sound="click"/>
+                        <onHover name="playSound" sound="hover"/>
+                    </effect>
+                </image>
+                        
+                <panel height="5%"/>
+                        
+                <image filename="Interface/img/menu/world-creation/botao-criar-1.png"
+                       style="image-button" width="50%" height="10%" align="center">
+                    <interact onClick="create()"/>
+                    <effect>
+                        <onHover name="changeImage"
+                                 active="Interface/img/menu/world-creation/botao-criar-2.png"
+                                 inactive="Interface/img/menu/world-creation/botao-criar-1.png"/>
+                        <onClick name="playSound" sound="click"/>
+                        <onHover name="playSound" sound="hover"/>
+                    </effect>
+                </image>
+                        
+                <panel height="5%"/>
+                        
+                <image filename="Interface/img/menu/world-creation/botao-voltar-1.png"
+                       style="image-button" width="50%" height="10%" align="center">
+                    <interact onClick="popdown()"/>
+                    <effect>
+                        <onHover name="changeImage"
+                                 active="Interface/img/menu/world-creation/botao-voltar-2.png"
+                                 inactive="Interface/img/menu/world-creation/botao-voltar-1.png"/>
+                        <onClick name="playSound" sound="click"/>
+                        <onHover name="playSound" sound="hover"/>
+                    </effect>
+                </image>
+                        
+                <panel height="*"/>        
+                
+            </panel>
+                    
+        </panel>
+        
+    </popup>
+    
+</nifty>

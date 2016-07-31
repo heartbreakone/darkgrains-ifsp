@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nifty xmlns="http://nifty-gui.sourceforge.net/nifty-1.3.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://nifty-gui.sourceforge.net/nifty-1.3.xsd http://nifty-gui.sourceforge.net/nifty-1.3.xsd">
+    <!-- +++++++++++++++++++++++++++++++++++++++ -->
+    <!-- start screen -->
+    <!-- +++++++++++++++++++++++++++++++++++++++ -->
+    
+    <useControls filename="nifty-default-controls.xml"/>
+    <useStyles filename="nifty-default-styles.xml"/>
+    
+    <registerSound id="click" filename="Sounds/MúsicasConvertidasParaOgg/Botoes/onClick.ogg" />
+    
+    <screen id="menu" controller="com.dg.nifty.MainMenuScreenController">
+    
+        <layer id="background" childLayout="overlay">
+            <image filename="Interface/img/menu/background.png"/>
+        </layer>
+        
+        <layer id="back-buttons" childLayout="center">
+                
+            <panel childLayout="horizontal" align="right" valign="top" height="10%">
+                
+                <panel width="*"/>
+                    
+                <image filename="Interface/img/menu/botao-configurargeral-1.png" style="image-button" width="50px" height="50px">
+                    <effect>
+                        <onHover name="changeImage"
+                                 active="Interface/img/menu/botao-configurargeral-2.png"
+                                 inactive="Interface/img/menu/botao-configurargeral-1.png"/>
+                        <onClick name="playSound" sound="click"/>
+                        <onHover name="playSound" sound="hover"/>
+                    </effect>
+                    <interact onClick="popup(settings)"/>
+                </image>
+                            
+                <panel width="5px"/>
+                            
+                <image filename="Interface/img/menu/login/botao-sair-3.png" style="image-button" width="50px" height="50px">
+                    <effect>
+                        <onHover name="changeImage"
+                                 active="Interface/img/menu/login/botao-sair-4.png"
+                                 inactive="Interface/img/menu/login/botao-sair-3.png"/>
+                        <onClick name="playSound" sound="click"/>
+                        <onHover name="playSound" sound="hover"/>
+                    </effect>
+                    <interact onClick="sair()"/>
+                </image>       
+                
+                <panel width="5px"/>
+                                                                
+            </panel>
+            
+        </layer>
+      
+        <layer id="content" childLayout="center">
+            
+            <panel width="50%" height="75%" childLayout="vertical">
+                
+                <image filename="Interface/img/menu/login/logo-aguia-1.png" width="50%" height="53%" align="center">
+                    <effect>
+                        <onStartScreen name="fade"/>
+                        <onEndScreen name="move" mode="out" direction="top" lenght="100"/>
+                    </effect>
+                </image>
+                
+                <panel height="10px"/>
+                
+                <image filename="Interface/img/menu/main-menu/botao-jogar-3.png" width="30%" height="16%" style="image-button" align="center">
+                    <effect>
+                        <onStartScreen name="move" mode="in" direction="left" lenght="100" startDelay="0" />
+                        <onHover name="changeImage"
+                                 active="Interface/img/menu/main-menu/botao-jogar-4.png"
+                                 inactive="Interface/img/menu/main-menu/botao-jogar-3.png"/>
+                        <onEndScreen name="move" mode="out" direction="left" lenght="100" startDelay="0" />
+                        <onClick name="playSound" sound="click"/>
+                        <onHover name="playSound" sound="hover"/>
+                    </effect>
+                    <interact onClick="jogar()"/>
+                </image>
+                
+                <panel height="5px"/>
+                
+                <image filename="Interface/img/menu/main-menu/botao-ranking-1.png" width="30%" height="16%" visibleToMouse="true" align="center">
+                    <effect>
+                        <onStartScreen name="move" mode="in" direction="left" lenght="100" startDelay="500"/>
+                        <onHover name="changeImage"
+                                 active="Interface/img/menu/main-menu/botao-ranking-2.png"
+                                 inactive="Interface/img/menu/main-menu/botao-ranking-1.png"/>
+                        <onEndScreen name="move" mode="out" direction="left" lenght="100" startDelay="500"/>
+                        <onClick name="playSound" sound="click"/>
+                        <onHover name="playSound" sound="hover"/>
+                    </effect>
+                    <interact onClick="rank()"/>
+                </image>
+                
+                <panel height="5px"/>
+                
+                <image filename="Interface/img/menu/main-menu/botao-logout-1.png" width="30%" height="16%" visibleToMouse="true" align="center">
+                    <effect>
+                        <onStartScreen name="move" mode="in" direction="left" lenght="100" startDelay="1000"/>
+                        <onHover name="changeImage"
+                                 active="Interface/img/menu/main-menu/botao-logout-2.png"
+                                 inactive="Interface/img/menu/main-menu/botao-logout-1.png"/>
+                        <onEndScreen name="move" mode="out" direction="left" lenght="100" startDelay="1000"/>
+                        <onClick name="playSound" sound="click"/>
+                        <onHover name="playSound" sound="hover"/>
+                    </effect>
+                    <interact onClick="logout()"/>
+                </image>
+                
+            </panel>
+            
+        </layer>
+      
+      
+    </screen>
+</nifty>
